@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Netrunner</title>
+
+    <style>
+        :root {
+            --bg: #0b0014;
+            --panel: #14001f;
+            --neon-cyan: #00fff0;
+            --neon-pink: #ff2bdc;
+            --text: #e6e1ff;
+            --grid: rgba(255, 255, 255, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            color: var(--text);
+            background:
+                    linear-gradient(var(--grid) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+                    radial-gradient(circle at top, #220033, var(--bg) 70%);
+            background-size: 40px 40px, 40px 40px, cover;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(0, 255, 240, 0.5);
+        }
+
+        nav a {
+            color: black;
+            margin-right: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-shadow: 0 0 8px white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--panel);
+            border: 1px solid var(--neon-cyan);
+            box-shadow:
+                    0 0 15px rgba(0, 255, 240, 0.3),
+                    inset 0 0 10px rgba(255, 43, 220, 0.2);
+        }
+
+        h1 {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid var(--neon-pink);
+            background: rgba(255, 255, 255, 0.03);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+
+        input, button {
+            font-family: inherit;
+            padding: 0.6rem;
+            background: black;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+        }
+
+        button {
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 240, 0.5);
+        }
+
+        button:hover {
+            background: var(--neon-cyan);
+            color: black;
+        }
+
+        label {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+
+        footer {
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .netrunner-info {
+    display: flex;
+    align-items: center; /* vertical alignment */
+    gap: 20px;           /* space between image and text */
+}
+
+.netrunner-info ul {
+    list-style: none;    /* remove bullets */
+    padding: 0;
+    margin: 0;
+}
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">HOME</a>
+    <a href="/routeros/identity">ROUTEROS</a>
+    <a href="/testcases">TESTCASES</a>
+    <a href="/testResults">RESULTS</a>
+    <a href="/run">RUN</a>
+
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    Copyright &copy 2026 Macskasi Csaba
+</footer>
+
+</body>
+</html>

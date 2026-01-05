@@ -1,0 +1,27 @@
+7. Build & run
+docker build -t flask-orm-demo .
+docker run -p 5000:5000 flask-orm-demo
+
+or:
+podman build   --platform linux/arm/v7   --network host   -t flask-orm-demo:armv7 .
+
+for cross compiling:
+apt-get install python3-librouteros
+apt-get install python3-flask
+apt install qemu-user-static
+systemctl --user restart podman
+
+
+
+8. Endpoints overview
+HTML
+
+GET / – Home
+GET /items – List items
+GET /add – Add item
+GET /system-call – Runs echo hello world
+REST API
+GET /api/items
+POST /api/items
+{ "name": "Example item" }
+DELETE /api/items/<id>

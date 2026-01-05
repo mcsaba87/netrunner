@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>
+    {% if creating %}Create Test Case{% else %}Edit Test Case{% endif %}
+</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% for category, message in messages %}
+<div style="color: red;">{{ message }}</div>
+{% endfor %}
+{% endwith %}
+
+<form method="post">
+
+    <label>
+        Name
+        <input type="text" name="name"
+               value="{{ testcase.name or '' }}" required>
+    </label><br/>
+
+    <label>
+        Type
+        <select name="type" required>
+            <option value="">-- Select --</option>
+            {% for t in types %}
+            <option value="{{ t }}"
+                    {% if t == testcase.type %}selected{% endif %}>
+                {{ t }}
+            </option>
+            {% endfor %}
+        </select>
+    </label><br/>
+
+    <label>
+        Source Address
+        <input type="text" name="srcAddr"
+               value="{{ testcase.srcAddr or '' }}">
+    </label><br/>
+
+    <label>
+        Source VLAN
+        <input type="number" name="srcVlan"
+               value="{{ testcase.srcVlan or '' }}">
+    </label><br/>
+
+    <label>
+        Destination Address
+        <input type="text" name="dstAddr"
+               value="{{ testcase.dstAddr or '' }}" required>
+    </label><br/>
+
+    <label>
+        Destination Port
+        <input type="number" name="dstPort"
+               value="{{ testcase.dstPort or '' }}">
+    </label><br/>
+
+    <label>
+        Gateway
+        <input type="text" name="gateway"
+               value="{{ testcase.gateway or '' }}">
+    </label><br/>
+
+    <label>
+        aux
+        <input type="text" name="aux"
+               value="{{ testcase.aux or '' }}">
+    </label><br/>
+
+    <label>
+        <input type="checkbox" name="passOnFailure"
+               {% if testcase.passOnFailure %}checked{% endif %}>
+        Pass On Failure
+    </label><br/>
+
+    <br><br>
+    <button type="submit">
+        {% if creating %}Create{% else %}Save{% endif %}
+    </button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Test Results</h1>
+<ul>
+{% for testResult in testResults %}
+    <li>{{ testResult.resultMsg }} | {{ testResult.created_at }} | {{ testResult.name }}</li>
+{% else %}
+    <li>No items yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}
+

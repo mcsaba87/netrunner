@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>ROUTEROS // SYSTEM IDENTITY</h1>
+
+{% if error %}
+<p style="color: #ff2bdc;">
+    CONNECTION ERROR:<br>
+    {{ error }}
+</p>
+{% else %}
+<p>CONNECTED DEVICE NAME:</p>
+
+<h2 style="
+        color: #ff2bdc;
+        text-shadow: 0 0 12px #ff2bdc;
+        font-size: 2rem;
+        margin-top: 1rem;
+    ">
+    {{ identity }}
+</h2>
+<p>
+    <ul>
+    {% for key, val in properties.items() %}
+    <li>
+        {{ key }}: {{ val }}
+    </li>
+    {% endfor %}
+    </ul>
+</p>
+
+{% endif %}
+{% endblock %}

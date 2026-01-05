@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Netrunner</h1>
+<p>A TDN (test driven networking) implementation.</p>
+
+<div class="netrunner-info">
+    <img src="{{ url_for('static', filename='netrunner_reduced.png') }}" alt="netrunner logo"/>
+    <ul>
+        <li>{{ testCaseCount }} testcases loaded.</li>
+        <li>{{ testResultCount }} results available.</li>
+        <li>Netrunner state: {{ runState }}</li>
+    </ul>
+</div>
+{% endblock %}
+

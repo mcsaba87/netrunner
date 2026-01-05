@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Test Cases</h1>
+<ul>
+    {% for testcase in testcases %}
+    <li>
+        <span>{{ testcase.name }} | {{ testcase.type }} | {{ testcase.dstAddr }} </span>
+
+        <div class="actions">
+            <form method="post" action="../testcase/{{ testcase.id }}/dup">
+                <button type="submit">DUP</button>
+            </form>
+            <form method="get" action="../testcase/{{ testcase.id }}/edit">
+                <button type="submit">EDIT</button>
+            </form>
+            <form method="post" action="../testcase/{{ testcase.id }}/delete">
+                <button type="submit">DELETE</button>
+            </form>
+            <form method="post" action="../run/{{ testcase.id }}">
+                <button type="submit">RUN</button>
+            </form>
+        </div>
+
+    </li>
+    {% else %}
+    <li>No items yet.</li>
+    {% endfor %}
+</ul>
+<table>
+    <td>
+        <td>
+            <form method="get" action="../testcase/new">
+                <button type="submit">ADD</button>
+            </form>
+        </td>
+        <td>
+            <form method="get" action="{{ url_for('export_testcases') }}">
+                <button type="submit">Export</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="../testcase/deleteAll">
+                <button type="submit">Delete all</button>
+            </form>
+        </td>
+        <td>
+            <form method="post"
+                  action="{{ url_for('import_testcases') }}"
+                  enctype="multipart/form-data">
+                <input type="file" name="file" accept="application/json" required>
+                <button type="submit">Import</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="../run">
+                <button type="submit">Run all</button>
+            </form>
+        </td>
+    </tr>
+</table>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+---
+ros_address: "192.168.74.7"
+ros_username: "api"
+ros_password: "api"
+cleanup: 1
+netrunner_subnet: "172.16.39.0/24"
+verbose: 1
+testTimeout: 2
+insertTestData: 1
+syslogServer: 192.168.74.240
+syslogPort: 514
+runTestsCron: "0 3 * * *"
